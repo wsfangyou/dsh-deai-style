@@ -1,0 +1,20 @@
+# dsh-deai-style cordis bundle patch：宿主半边 + 浏览器 roster（dsh.client）——
+# 一行两用：deai-style settings 命名空间注册、人类文风段注册、
+# 设置页「去 AI 味」行（settings.general.item, order 17）。
+# config:
+#   sectionOrder  文风段 order（默认 2210：persona 2180 / code-flow 2190 /
+#                 think-guard 2200 之后，memory-vault 2300 之前；避开撞序）
+#   language      注入哪一套套话表（both/zh/en，默认 both）
+#   guardFacts    事实护栏（默认 true，**恒在**；false 意味着允许为文风
+#                 改动内容——不建议关）
+#   extraBans     追加自定义禁用词（字符串数组；构建时净化：≤20 条、每条 ≤60 字）
+# 运行时可写字段（enabled/scope/register）由设置页写入本 profile 的
+# cordis.patch.yml 覆盖层，不在此处写死。
+- insert:
+    - id: deai-style
+      name: dsh-deai-style
+      config:
+        sectionOrder: 2210
+        language: both
+        guardFacts: true
+        extraBans: []
